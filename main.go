@@ -81,14 +81,16 @@ func main() {
 	go WalkDir(ch, done, dirpath)
 
 	i := 1
-	for n := 1; n > 0; {
+
+loop:
+	for {
 		select {
 		case p := <-ch:
 			fmt.Printf("Progression: %d\n", i)
 			i++
 			go Normalize(p)
 		case <-done:
-			n--
+			break loop
 		}
 	}
 }
