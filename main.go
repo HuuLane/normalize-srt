@@ -44,7 +44,7 @@ func Normalize(filepath string) {
 	}
 
 	// overwrite file
-	f, err = os.OpenFile(filepath, os.O_RDWR|os.O_TRUNC, 0666)
+	f, err = os.OpenFile(filepath, os.O_RDWR|os.O_TRUNC, 0644)
 	w := bufio.NewWriter(f)
 	for i, caption := range captions {
 		_, err := w.WriteString(
